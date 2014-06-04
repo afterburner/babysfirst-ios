@@ -6,3 +6,5 @@
 #
 # Pods/
 
+# Ignore personal settings.
+xcuserdata
