@@ -2,3 +2,5 @@ language: objective-c
 xcode_workspace: BabysFirst.xcworkspace
 before_script:
   - export LANG=en_US.UTF-8
+before_install:
+  - gem install cocoapods -v '0.33.1'
