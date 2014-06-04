@@ -9,10 +9,14 @@
 #import "AFBMasterViewController.h"
 
 #import "AFBDetailViewController.h"
+#import "AFBGitHubController.h"
 
 @interface AFBMasterViewController () {
   NSArray *_objects;
 }
+
+@property (nonatomic, strong) AFBGitHubController *gitHubController;
+
 @end
 
 @implementation AFBMasterViewController
@@ -20,6 +24,13 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+
+  [self.gitHubController listReposAt:@"orgs/afterburner" success:^(NSArray *repos) {
+    _objects = repos;
+    [self.tableView reloadData];
+  } failure:^(NSError *error) {
+
+  }];
 }
 
 #pragma mark - Table View
@@ -38,8 +49,8 @@
 {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-  NSDate *object = _objects[indexPath.row];
-  cell.textLabel.text = [object description];
+  NSDictionary *repo = _objects[indexPath.row];
+  cell.textLabel.text = [repo objectForKey:kAFBGitHubKeyForRepoName];
   return cell;
 }
 
@@ -47,9 +58,19 @@
 {
   if ([[segue identifier] isEqualToString:@"showDetail"]) {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    NSDate *object = _objects[indexPath.row];
-    [[segue destinationViewController] setDetailItem:object];
+    NSDictionary *repo = _objects[indexPath.row];
+    [[segue destinationViewController] setDetailItem:[repo objectForKey:kAFBGitHubKeyForRepoDescription]];
   }
+}
+
+#pragma mark -
+
+- (AFBGitHubController *)gitHubController
+{
+  if (_gitHubController == nil) {
+    _gitHubController = [[AFBGitHubController alloc] init];
+  }
+  return _gitHubController;
 }
 
 @end
