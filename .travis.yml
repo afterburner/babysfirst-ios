@@ -1,5 +1,6 @@
 language: objective-c
 xcode_workspace: BabysFirst.xcworkspace
+xcode_scheme: BabysFirst
 before_script:
   - export LANG=en_US.UTF-8
 before_install:
