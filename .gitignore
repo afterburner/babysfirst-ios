@@ -6,5 +6,7 @@
 #
 # Pods/
 
+.DS_Store
+
 # Ignore personal settings.
 xcuserdata
