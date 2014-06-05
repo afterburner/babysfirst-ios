@@ -6,3 +6,5 @@ before_script:
   - export LANG=en_US.UTF-8
 before_install:
   - gem install cocoapods -v '0.33.1'
+  - brew upgrade
+  - brew upgrade xctool
