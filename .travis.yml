@@ -1,6 +1,7 @@
 language: objective-c
 xcode_workspace: BabysFirst.xcworkspace
 xcode_scheme: BabysFirst
+xcode_sdk: iphonesimulator
 before_script:
   - export LANG=en_US.UTF-8
 before_install:
