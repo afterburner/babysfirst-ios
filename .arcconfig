@@ -1,3 +1,7 @@
 {
-  "phabricator.uri" : "http://phabricator.afterburner.me"
+  "phabricator.uri" : "http://phabricator.afterburner.me",
+  "load" : [
+    "travicator/arc"
+  ],
+  "arcanist_configuration" : "TravicatorArcanistConfiguration"
 }
